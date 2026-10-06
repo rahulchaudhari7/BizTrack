@@ -194,6 +194,9 @@ export interface TransactionItem {
 export interface DashboardSummary {
   totalSales: number;
   totalIncome?: number;
+  cogs: number;
+  grossProfit: number;
+  grossMargin: number;
   businessExpenses: number;
   personalExpenses: number;
   purchaseCosts: number;
@@ -224,6 +227,8 @@ export interface MonthlyDataPoint {
   year: number;
   month: number;
   income: number;
+  cogs?: number;
+  grossProfit?: number;
   businessExpense: number;
   personalExpense: number;
   purchaseCost: number;

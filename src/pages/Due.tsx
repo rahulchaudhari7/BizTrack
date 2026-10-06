@@ -96,7 +96,7 @@ export const Due: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
-            Credit Bookkeeping & Cash Collection (उधारो हिसाब किताब)
+            Credit Bookkeeping & Cash Collection
           </span>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">
             Due / Receivables & Payables
@@ -124,7 +124,7 @@ export const Due: React.FC = () => {
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
               <ArrowDownLeft className="w-4 h-4 text-emerald-600" />
-              Money to Receive (उठ्न बाँकी)
+              Money to Receive (Accounts Receivable)
             </span>
             <h3 className="text-2xl font-black text-emerald-950 mt-1">
               {formatCurrency(summary.totalReceivable, currency)}
@@ -143,7 +143,7 @@ export const Due: React.FC = () => {
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-rose-800 flex items-center gap-1.5">
               <ArrowUpRight className="w-4 h-4 text-rose-600" />
-              Money to Pay (साहुलाई तिर्न बाँकी)
+              Money to Pay (Accounts Payable)
             </span>
             <h3 className="text-2xl font-black text-rose-950 mt-1">
               {formatCurrency(summary.totalPayable, currency)}

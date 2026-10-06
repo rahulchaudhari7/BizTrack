@@ -84,7 +84,7 @@ export const Suppliers: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
-            Vendor & Supplier Directory (आपूर्तिकर्ता खाता)
+            Vendor & Supplier Directory
           </span>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">
             Supplier Management
@@ -140,7 +140,7 @@ export const Suppliers: React.FC = () => {
 
         <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
           <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
-            Payables Due (साहुलाई तिर्न बाँकी)
+            Accounts Payable (Supplier Due)
           </span>
           <span className="text-2xl font-black text-amber-900 mt-1 block">
             {formatCurrency(totalPayables, currency)}

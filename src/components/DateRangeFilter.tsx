@@ -18,13 +18,13 @@ export const DateRangeFilter: React.FC<DateRangeFilterProps> = ({ value, onChang
   const [customEnd, setCustomEnd] = useState(value.endDate || '');
 
   const options: Array<{ label: string; value: DateFilterState['range'] }> = [
-    { label: 'All Time (सबै समय)', value: 'all' },
-    { label: 'Today (आज)', value: 'today' },
-    { label: 'This Week (यो हप्ता)', value: 'this_week' },
-    { label: 'This Month (यो महिना)', value: 'this_month' },
-    { label: 'Last Month (गत महिना)', value: 'last_month' },
-    { label: 'This Fiscal Year (चालू आ.व.)', value: 'this_fiscal_year' },
-    { label: 'Last Fiscal Year (गत आ.व.)', value: 'last_fiscal_year' },
+    { label: 'All Time', value: 'all' },
+    { label: 'Today', value: 'today' },
+    { label: 'This Week', value: 'this_week' },
+    { label: 'This Month', value: 'this_month' },
+    { label: 'Last Month', value: 'last_month' },
+    { label: 'This Fiscal Year', value: 'this_fiscal_year' },
+    { label: 'Last Fiscal Year', value: 'last_fiscal_year' },
     { label: 'Custom Range...', value: 'custom' },
   ];
 

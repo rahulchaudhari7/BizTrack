@@ -109,7 +109,7 @@ export const SupplierModal: React.FC<SupplierModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={supplierToEdit ? 'Edit Supplier (आपूर्तिकर्ता)' : 'Add New Supplier (नयाँ आपूर्तिकर्ता)'}
+      title={supplierToEdit ? 'Edit Supplier Details' : 'Add New Supplier'}
       subtitle="Store vendor contact info, PAN/VAT registration, and address for stock purchasing"
       maxWidth="max-w-xl"
     >

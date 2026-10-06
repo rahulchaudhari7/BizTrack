@@ -125,7 +125,7 @@ export function generateInvoicePDF(business: any, sale: any): void {
   // Business Header
   doc.setFontSize(18);
   doc.setTextColor(30, 41, 59);
-  doc.text(business?.businessName || 'मेरो व्यवसाय', 14, 20);
+  doc.text(business?.businessName || 'BizTrack Business', 14, 20);
 
   doc.setFontSize(9);
   doc.setTextColor(100, 116, 139);
@@ -143,7 +143,7 @@ export function generateInvoicePDF(business: any, sale: any): void {
   // INVOICE Title Badge
   doc.setFontSize(14);
   doc.setTextColor(79, 70, 229);
-  doc.text(business?.vatEnabled ? 'TAX INVOICE (कर बिजक)' : 'INVOICE / BILL (बिजक)', 14, 48);
+  doc.text(business?.vatEnabled ? 'TAX INVOICE' : 'INVOICE / BILL', 14, 48);
 
   // Invoice Meta
   doc.setFontSize(9);
@@ -160,7 +160,7 @@ export function generateInvoicePDF(business: any, sale: any): void {
 
   doc.setFontSize(8);
   doc.setTextColor(100, 116, 139);
-  doc.text('BILLED TO (ग्राहक विवरण):', 17, 57);
+  doc.text('BILLED TO:', 17, 57);
 
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
@@ -243,7 +243,7 @@ export function generateInvoicePDF(business: any, sale: any): void {
   const footerY = 270;
   doc.setFontSize(9);
   doc.setTextColor(100, 116, 139);
-  doc.text('Thank you for your business! धन्यवाद!', 105, footerY, { align: 'center' });
+  doc.text('Thank you for your business!', 105, footerY, { align: 'center' });
   doc.setFontSize(8);
   doc.text('Computer Generated Invoice • BizTrack Nepal', 105, footerY + 5, { align: 'center' });
 
@@ -272,35 +272,35 @@ export function generateFinancialPDFReport(
   // Header Title
   doc.setFontSize(20);
   doc.setTextColor(30, 41, 59);
-  doc.text(business?.businessName || 'मेरो व्यवसाय', 14, 20);
+  doc.text(business?.businessName || 'BizTrack Business', 14, 20);
 
   doc.setFontSize(10);
   doc.setTextColor(100, 116, 139);
-  doc.text(`Nepal Business Financial Analytics & Profit Report`, 14, 26);
+  doc.text(`Financial Performance & Profit Analysis Report`, 14, 26);
   doc.text(`Date: ${today} (${todayBS}) | Base: ${business?.municipality || 'Kathmandu'}, Nepal`, 14, 32);
 
   // Financial Summary Cards Section
   doc.setFontSize(12);
   doc.setTextColor(15, 23, 42);
-  doc.text('Key Financial Summary (वित्तीय सारांश)', 14, 42);
+  doc.text('Key Financial Summary', 14, 42);
 
   const summaryData = [
-    ['Total Sales (कुल बिक्री)', formatCurrency(summary.totalSales || summary.totalIncome, currencySymbol)],
-    ['Business Operating Expenses (व्यापारिक खर्च)', formatCurrency(summary.businessExpenses, currencySymbol)],
-    ['Product Purchases / Stock Cost (सामान खरिद लागत)', formatCurrency(summary.purchaseCosts, currencySymbol)],
-    ['Personal Expenses Isolated (व्यक्तिगत खर्च)', formatCurrency(summary.personalExpenses, currencySymbol)],
+    ['Total Sales', formatCurrency(summary.totalSales || summary.totalIncome, currencySymbol)],
+    ['Business Operating Expenses', formatCurrency(summary.businessExpenses, currencySymbol)],
+    ['Cost of Goods Sold (Purchases)', formatCurrency(summary.purchaseCosts, currencySymbol)],
+    ['Personal Expenses (Non-Business)', formatCurrency(summary.personalExpenses, currencySymbol)],
     [
-      'Net Profit / (Loss) (खुद नाफा / घाटा)',
+      'Net Profit / (Loss)',
       `${summary.isProfit ? '+' : '-'}${formatCurrency(summary.isProfit ? summary.netProfit : summary.netLoss, currencySymbol)}`,
     ],
-    ['Profit Margin (नाफा प्रतिशत)', `${summary.profitMargin || 0}%`],
-    ['Outstanding Receivables (उठ्न बाँकी रकम)', formatCurrency(summary.outstandingReceivables || 0, currencySymbol)],
-    ['Outstanding Payables (तिर्न बाँकी रकम)', formatCurrency(summary.outstandingPayables || 0, currencySymbol)],
-    ['Current Stock Valuation (मौज्दात सामानको मूल्य)', formatCurrency(summary.currentStockValue || 0, currencySymbol)],
+    ['Profit Margin', `${summary.profitMargin || 0}%`],
+    ['Accounts Receivable (Customer Due)', formatCurrency(summary.outstandingReceivables || 0, currencySymbol)],
+    ['Accounts Payable (Supplier Due)', formatCurrency(summary.outstandingPayables || 0, currencySymbol)],
+    ['Current Stock Valuation', formatCurrency(summary.currentStockValue || 0, currencySymbol)],
   ];
 
   if (summary.vatEnabled) {
-    summaryData.push(['VAT Collected (संकलित भ्याट)', formatCurrency(summary.vatCollected || 0, currencySymbol)]);
+    summaryData.push(['VAT Collected', formatCurrency(summary.vatCollected || 0, currencySymbol)]);
   }
 
   autoTable(doc, {
@@ -322,7 +322,7 @@ export function generateFinancialPDFReport(
 
   doc.setFontSize(12);
   doc.setTextColor(15, 23, 42);
-  doc.text('Recent Monthly Trends (मासिक आय-व्यय)', 14, currentY);
+  doc.text('Monthly Financial Trends', 14, currentY);
 
   const monthlyRows = (monthlyData || []).map((m) => [
     m.label,

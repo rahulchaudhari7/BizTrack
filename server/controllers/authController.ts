@@ -130,7 +130,7 @@ export async function googleAuth(req: Request, res: Response): Promise<void> {
         email,
         name: name || email.split('@')[0],
         profilePicture: picture || '',
-        businessName: `${name || 'मेरो'} व्यवसाय`,
+        businessName: name ? `${name}'s Business` : 'Everest Trading Enterprise',
         ownerName: name || '',
         businessType: 'Retail Shop',
         businessCategory: 'General Commerce',

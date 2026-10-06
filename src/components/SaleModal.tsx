@@ -215,7 +215,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Create Sale & Tax Invoice (बिक्री तथा बिजक)"
+      title="Create Sale & Invoice"
       subtitle="Generates Nepal Invoice, updates customer dues, and automatically decrements stock"
       maxWidth="max-w-2xl"
     >
@@ -229,7 +229,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
         {/* Product Selection */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Product Item (बिक्री हुने सामान)
+            Product Item
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -323,7 +323,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
                 className="w-4 h-4 text-indigo-600 rounded cursor-pointer"
               />
               <label htmlFor="saleVat" className="text-xs font-bold text-slate-700 cursor-pointer">
-                Apply 13% VAT on this invoice (१३% भ्याट लागू हुने)
+                Apply 13% VAT on this invoice
               </label>
             </div>
           )}
@@ -332,7 +332,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
         {/* Customer Information */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Customer Information (ग्राहक विवरण)
+            Customer Information
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -343,7 +343,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
                 onChange={handleCustomerSelect}
                 className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg cursor-pointer"
               >
-                <option value="walkin">Walk-in Customer (खुद्रा ग्राहक)</option>
+                <option value="walkin">Walk-in Customer</option>
                 {customers.map((c) => (
                   <option key={c._id} value={c._id}>
                     {c.name} {c.phone ? `(${c.phone})` : ''} {c.totalDue > 0 ? `[Due: ${formatCurrency(c.totalDue, currency)}]` : ''}
@@ -404,7 +404,7 @@ export const SaleModal: React.FC<SaleModalProps> = ({
         {/* Payment & Credit (Due) Settings */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Payment & Credit Terms (भुक्तानी तथा बाँकी हिसाब)
+            Payment & Credit Terms
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -430,9 +430,9 @@ export const SaleModal: React.FC<SaleModalProps> = ({
                 onChange={(e) => setPaymentStatus(e.target.value as any)}
                 className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg cursor-pointer font-bold"
               >
-                <option value="Paid">Fully Paid (नगद प्राप्त)</option>
-                <option value="Partially Paid">Partially Paid (आंशिक भुक्तानी)</option>
-                <option value="Due">Credit / Due (उधारो)</option>
+                <option value="Paid">Fully Paid</option>
+                <option value="Partially Paid">Partially Paid</option>
+                <option value="Due">Credit / Unpaid Due</option>
               </select>
             </div>
 
@@ -472,13 +472,13 @@ export const SaleModal: React.FC<SaleModalProps> = ({
             </div>
           )}
           <div className="flex justify-between text-sm font-black pt-2 border-t border-indigo-200/60 text-slate-900">
-            <span>Grand Total (कुल जम्मा):</span>
+            <span>Grand Total:</span>
             <span className="text-base text-indigo-900">{formatCurrency(grandTotal, currency)}</span>
           </div>
 
           {remainingDue > 0 && (
             <div className="flex justify-between text-xs font-bold pt-1 text-rose-600">
-              <span>Customer Remaining Due (उठ्न बाँकी):</span>
+              <span>Customer Remaining Due:</span>
               <span>{formatCurrency(remainingDue, currency)}</span>
             </div>
           )}

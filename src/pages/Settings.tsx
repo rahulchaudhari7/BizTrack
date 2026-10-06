@@ -40,7 +40,7 @@ export const Settings: React.FC = () => {
   const [name, setName] = useState(user?.name || '');
   const [businessName, setBusinessName] = useState(user?.businessName || '');
   const [ownerName, setOwnerName] = useState(user?.ownerName || user?.name || '');
-  const [businessType, setBusinessType] = useState(user?.businessType || 'Retail Shop (खुद्रा पसल)');
+  const [businessType, setBusinessType] = useState(user?.businessType || 'Retail Shop');
   const [businessCategory, setBusinessCategory] = useState(user?.businessCategory || 'General Commerce');
   const [panNumber, setPanNumber] = useState(user?.panNumber || '');
   const [vatEnabled, setVatEnabled] = useState(user?.vatEnabled || false);
@@ -94,7 +94,7 @@ export const Settings: React.FC = () => {
       setName(user.name || '');
       setBusinessName(user.businessName || '');
       setOwnerName(user.ownerName || user.name || '');
-      setBusinessType(user.businessType || 'Retail Shop (खुद्रा पसल)');
+      setBusinessType(user.businessType || 'Retail Shop');
       setBusinessCategory(user.businessCategory || 'General Commerce');
       setPanNumber(user.panNumber || '');
       setVatEnabled(Boolean(user.vatEnabled));
@@ -243,7 +243,7 @@ export const Settings: React.FC = () => {
           <div>
             <div className="flex items-center space-x-2">
               <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-md border border-indigo-100">
-                नेपाल व्यवसाय प्रणाली (Nepal Business Suite)
+                Nepal Business Management Suite
               </span>
             </div>
             <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
@@ -255,7 +255,7 @@ export const Settings: React.FC = () => {
           </div>
           <div className="flex items-center space-x-2">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-              🇳🇵 Default: Nepal (रु NPR)
+              Currency: Nepalese Rupee (रु NPR)
             </span>
           </div>
         </div>
@@ -281,7 +281,7 @@ export const Settings: React.FC = () => {
             <Building className="w-5 h-5 text-indigo-600" />
             <div>
               <h2 className="text-sm font-bold text-slate-900">
-                1. Business Identity & Legal Registration (व्यवसाय तथा दर्ता विवरण)
+                1. Business Identity & Legal Registration
               </h2>
               <p className="text-[11px] text-slate-500">
                 Your business trade name, owner details, PAN and optional VAT information for invoices.
@@ -292,12 +292,12 @@ export const Settings: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Business / Firm Name (व्यवसायको नाम) *
+                Business / Firm Name *
               </label>
               <input
                 type="text"
                 required
-                placeholder="e.g. मेरो ट्रेडर्स / Himalayan Organic Store"
+                placeholder="e.g. Everest Trading / Himalayan Organic Store"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-xs"
@@ -306,7 +306,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Proprietor / Owner Name (प्रोप्राइटर / सञ्चालक)
+                Proprietor / Owner Name
               </label>
               <input
                 type="text"
@@ -319,7 +319,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Business Type (व्यवसाय प्रकार)
+                Business Type
               </label>
               <select
                 value={businessType}
@@ -353,7 +353,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                PAN Number (स्थायी लेखा नम्बर - PAN)
+                PAN Number (Permanent Account Number)
               </label>
               <input
                 type="text"
@@ -419,7 +419,7 @@ export const Settings: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                    VAT Registration (मूल्य अभिवृद्धि कर - भ्याट)
+                    VAT Registration
                   </h3>
                   <p className="text-[11px] text-slate-500">
                     Enable if your business is registered for VAT under Nepal IRD (13% Standard Rate).
@@ -440,7 +440,7 @@ export const Settings: React.FC = () => {
                 <div className="mt-4 pt-4 border-t border-slate-200/60 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                      VAT Registration Number (भ्याट नम्बर)
+                      VAT Registration Number
                     </label>
                     <input
                       type="text"
@@ -475,7 +475,7 @@ export const Settings: React.FC = () => {
             <MapPin className="w-5 h-5 text-indigo-600" />
             <div>
               <h2 className="text-sm font-bold text-slate-900">
-                2. Nepal Address Details (नेपाल ठेगाना प्रणाली)
+                2. Address Details
               </h2>
               <p className="text-[11px] text-slate-500">
                 Configured with Nepal's 7 provinces, 77 districts, municipalities, wards, and toles.
@@ -486,7 +486,7 @@ export const Settings: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Province (प्रदेश) *
+                Province *
               </label>
               <select
                 value={province}
@@ -503,7 +503,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                District (जिल्ला) *
+                District *
               </label>
               <select
                 value={district}
@@ -520,7 +520,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Municipality / Rural Mun. (पालिका) *
+                Municipality / Local Body *
               </label>
               <input
                 type="text"
@@ -534,7 +534,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Ward Number (वडा नं.)
+                Ward Number
               </label>
               <input
                 type="text"
@@ -547,7 +547,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Tole / Street Area (टोल / मार्ग)
+                Tole / Street Area
               </label>
               <input
                 type="text"
@@ -565,7 +565,7 @@ export const Settings: React.FC = () => {
               <input
                 type="text"
                 disabled
-                value="Nepal (नेपाल)"
+                value="Nepal"
                 className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-600 font-bold shadow-xs cursor-not-allowed"
               />
             </div>
@@ -591,7 +591,7 @@ export const Settings: React.FC = () => {
             <DollarSign className="w-5 h-5 text-indigo-600" />
             <div>
               <h2 className="text-sm font-bold text-slate-900">
-                3. Financial & Accounting Preferences (मुद्रा तथा मौज्दात)
+                3. Financial & Accounting Preferences
               </h2>
               <p className="text-[11px] text-slate-500">
                 Configure currency, low-stock notifications, and Nepali fiscal year accounting.
@@ -602,7 +602,7 @@ export const Settings: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Base Currency (मुद्रा)
+                Base Currency
               </label>
               <select
                 value={currency}
@@ -639,7 +639,7 @@ export const Settings: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Fiscal Year Format (आर्थिक वर्ष)
+                Fiscal Year Format
               </label>
               <select
                 value={fiscalYearType}
@@ -662,10 +662,10 @@ export const Settings: React.FC = () => {
             <CreditCard className="w-5 h-5 text-indigo-600" />
             <div>
               <h2 className="text-sm font-bold text-slate-900">
-                4. Nepal Payment Gateways & Methods (भुक्तानी माध्यमहरू)
+                4. Payment Methods & Gateways
               </h2>
               <p className="text-[11px] text-slate-500">
-                Cash is the default. Includes eSewa, Khalti, IME Pay, Fonepay QR, ConnectIPS, and custom methods.
+                Cash is the default. Includes Fonepay QR, eSewa, Khalti, IME Pay, ConnectIPS, and custom methods.
               </p>
             </div>
           </div>
@@ -726,7 +726,7 @@ export const Settings: React.FC = () => {
             <Tag className="w-5 h-5 text-indigo-600" />
             <div>
               <h2 className="text-sm font-bold text-slate-900">
-                5. Business Expense Categories (खर्च वर्गहरू)
+                5. Business Expense Categories
               </h2>
               <p className="text-[11px] text-slate-500">
                 Standard Nepal expense categories are pre-loaded. Add custom categories below.

@@ -110,7 +110,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={customerToEdit ? 'Edit Customer Details' : 'Add New Customer (नयाँ ग्राहक)'}
+      title={customerToEdit ? 'Edit Customer Details' : 'Add New Customer'}
       subtitle="Store contact information, PAN, and address for sales and credit tracking"
       maxWidth="max-w-xl"
     >
@@ -181,12 +181,12 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
         {/* Nepal Address Section */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 block uppercase tracking-wider">
-            Nepal Address System (ठेगाना)
+            Address Details
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Province (प्रदेश)</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">Province</label>
               <select
                 value={province}
                 onChange={(e) => setProvince(e.target.value)}
@@ -201,7 +201,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">District (जिल्ला)</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">District</label>
               <input
                 type="text"
                 placeholder="e.g. Kathmandu, Kaski, Chitwan"
@@ -214,7 +214,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Municipality (पालिका)</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">Municipality / Local Body</label>
               <input
                 type="text"
                 placeholder="e.g. Kathmandu Metro"
@@ -224,7 +224,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
               />
             </div>
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Ward No. (वडा)</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">Ward Number</label>
               <input
                 type="text"
                 placeholder="e.g. 10"
@@ -234,7 +234,7 @@ export const CustomerModal: React.FC<CustomerModalProps> = ({
               />
             </div>
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Tole / Area (टोल)</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">Tole / Street Area</label>
               <input
                 type="text"
                 placeholder="e.g. New Baneshwor"

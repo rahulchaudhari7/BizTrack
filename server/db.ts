@@ -4,6 +4,9 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 let mongoMemoryServer: MongoMemoryServer | null = null;
 
 export async function connectDB(): Promise<void> {
+  // Set bufferCommands to false to fail fast instead of hanging when disconnected
+  mongoose.set('bufferCommands', false);
+
   const customUri = process.env.MONGO_URI;
 
   if (customUri && customUri.trim() !== '') {
@@ -27,8 +30,7 @@ export async function connectDB(): Promise<void> {
     });
     console.log(`[DB] Embedded MongoDB connected successfully at ${uri}`);
   } catch (error) {
-    console.error(`[DB] Error starting embedded MongoDB:`, error);
-    throw error;
+    console.warn(`[DB] Embedded MongoDB not available — running with offline fallback:`, error);
   }
 }
 

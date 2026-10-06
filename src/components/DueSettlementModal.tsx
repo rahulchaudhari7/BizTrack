@@ -100,7 +100,7 @@ export const DueSettlementModal: React.FC<DueSettlementModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={isSale ? 'Receive Customer Due Payment (रकम असुली)' : 'Pay Supplier Due (बाँकी भुक्तानी)'}
+      title={isSale ? 'Receive Customer Payment' : 'Pay Supplier Outstanding Due'}
       subtitle={`${isSale ? 'Customer' : 'Supplier'}: ${target.partyName} • ${target.title}`}
     >
       <form onSubmit={handleSubmit} className="space-y-4">

@@ -122,6 +122,7 @@ router.get('/dashboard/monthly', authenticate, getMonthlyAnalytics);
 router.get('/dashboard/categories', authenticate, getCategoryAnalytics);
 router.get('/dashboard/products', authenticate, getProductPerformance);
 router.get('/dashboard/payment-methods', authenticate, getPaymentMethodAnalytics);
+router.get('/dashboard/payments', authenticate, getPaymentMethodAnalytics);
 
 // --- Transactions Routes ---
 router.get('/transactions', authenticate, getTransactions);

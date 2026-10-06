@@ -209,7 +209,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Record Stock Purchase (सामान खरिद दाखिला)"
+      title="Record Stock Purchase"
       subtitle="Adds new inventory units, updates vendor dues, and tracks stock investment"
       maxWidth="max-w-2xl"
     >
@@ -223,7 +223,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
         {/* Product selection */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Stock Product (खरिद गरिने सामान)
+            Stock Product
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -319,7 +319,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
                 className="w-4 h-4 text-indigo-600 rounded cursor-pointer"
               />
               <label htmlFor="purchaseVat" className="text-xs font-bold text-slate-700 cursor-pointer">
-                Supplier charged 13% VAT (१३% खरिद भ्याट समावेश भएको)
+                Supplier charged 13% VAT
               </label>
             </div>
           )}
@@ -328,7 +328,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
         {/* Supplier Info */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Supplier / Vendor (आपूर्तिकर्ता विवरण)
+            Supplier / Vendor Details
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -389,7 +389,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
         {/* Payment & Supplier Due Terms */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
           <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-            Payment & Payables (भुक्तानी तथा साहुको बाँकी हिसाब)
+            Payment & Accounts Payable
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -415,9 +415,9 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
                 onChange={(e) => setPaymentStatus(e.target.value as any)}
                 className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg cursor-pointer font-bold"
               >
-                <option value="Paid">Fully Paid (नगद भुक्तान)</option>
-                <option value="Partially Paid">Partially Paid (आंशिक भुक्तानी)</option>
-                <option value="Due">Credit / Due (साहुलाई तिर्न बाँकी)</option>
+                <option value="Paid">Fully Paid</option>
+                <option value="Partially Paid">Partially Paid</option>
+                <option value="Due">Credit / Unpaid Due</option>
               </select>
             </div>
 
@@ -451,12 +451,12 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
             </div>
           )}
           <div className="flex justify-between text-sm font-black pt-2 border-t border-amber-200 text-amber-950">
-            <span>Total Purchase Outlay (कुल खरिद खर्च):</span>
+            <span>Total Purchase Bill:</span>
             <span className="text-base text-amber-950">{formatCurrency(totalPurchaseCost, currency)}</span>
           </div>
           {remainingDue > 0 && (
             <div className="flex justify-between text-xs font-bold pt-1 text-rose-600">
-              <span>Supplier Due to Pay (साहुलाई तिर्न बाँकी):</span>
+              <span>Outstanding Payable (Supplier Due):</span>
               <span>{formatCurrency(remainingDue, currency)}</span>
             </div>
           )}

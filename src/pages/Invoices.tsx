@@ -69,7 +69,7 @@ export const Invoices: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
-            Billing & Invoicing (बिजक तथा बिल व्यवस्थापन)
+            Billing & Invoicing
           </span>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">
             Sales Invoices
@@ -144,9 +144,9 @@ export const Invoices: React.FC = () => {
               className="px-3 py-2 bg-white border border-slate-200 rounded-xl font-semibold text-slate-700 cursor-pointer"
             >
               <option value="All">All Statuses</option>
-              <option value="Paid">Fully Paid (नगद)</option>
+              <option value="Paid">Fully Paid</option>
               <option value="Partially Paid">Partially Paid</option>
-              <option value="Due">Due (उधारो)</option>
+              <option value="Due">Unpaid / Due</option>
             </select>
           </div>
         </div>

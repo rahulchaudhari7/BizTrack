@@ -77,7 +77,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </span>
             </h1>
             <p className="text-xs text-slate-400 truncate max-w-[140px]">
-              {user?.businessName || 'मेरो व्यवसाय'}
+              {user?.businessName || 'My Business'}
             </p>
           </div>
         </div>

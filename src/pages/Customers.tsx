@@ -88,7 +88,7 @@ export const Customers: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
-            Customer Directory (ग्राहक खाता)
+            Customer Directory
           </span>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">
             Customer Management
@@ -144,7 +144,7 @@ export const Customers: React.FC = () => {
 
         <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
           <span className="text-xs font-bold uppercase tracking-wider text-rose-600 block">
-            Total Customer Dues (उठ्न बाँकी)
+            Total Receivables (Customer Due)
           </span>
           <span className="text-2xl font-black text-rose-700 mt-1 block">
             {formatCurrency(totalReceivables, currency)}

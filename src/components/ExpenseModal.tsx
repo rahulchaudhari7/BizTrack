@@ -13,50 +13,42 @@ interface ExpenseModalProps {
 }
 
 const BUSINESS_CATEGORIES = [
-  'Product / Stock',
-  'Transportation',
-  'Fuel',
+  'Inventory / Stock',
   'Rent',
-  'Salary / Wages',
-  'Electricity',
-  'Internet',
-  'Mobile / Telephone',
+  'Salary',
+  'Transportation',
+  'Utilities',
   'Marketing',
   'Advertising',
-  'Packaging',
   'Office Supplies',
+  'Equipment',
   'Maintenance',
+  'Internet',
+  'Phone',
   'Bank Charges',
-  'Payment Gateway Charges',
-  'Government Fees',
-  'Tax / VAT',
-  'Food / Refreshments',
-  'Travel',
-  'Delivery',
-  'Software / Subscription',
+  'Taxes',
   'Other',
 ];
 
 const PERSONAL_CATEGORIES = [
   'Food',
-  'Rent',
-  'Travel',
+  'Transportation',
   'Shopping',
   'Education',
   'Family',
-  'Medical',
   'Entertainment',
-  'Mobile / Internet',
+  'Medical',
+  'Travel',
   'Other',
 ];
 
 const PAYMENT_METHODS = [
   'Cash',
   'Bank Transfer',
+  'Fonepay',
   'eSewa',
   'Khalti',
   'IME Pay',
-  'Fonepay',
   'ConnectIPS',
   'Debit Card',
   'Credit Card',
@@ -171,11 +163,11 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={expenseToEdit ? 'Edit Expense Record (खर्च सम्पादन)' : 'Record New Expense (नयाँ खर्च दाखिला)'}
+      title={expenseToEdit ? 'Edit Expense Record' : 'Record New Expense'}
       subtitle={
         isPersonal
           ? 'Personal expense kept separate from business profit'
-          : 'Business operating expenditure (व्यापारिक सञ्चालन खर्च)'
+          : 'Business operating expenditure'
       }
     >
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -199,7 +191,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            🏢 Business Expense (व्यापारिक खर्च)
+            🏢 Business Expense
           </button>
           <button
             type="button"
@@ -213,7 +205,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            👤 Personal Expense (व्यक्तिगत खर्च)
+            👤 Personal Expense
           </button>
         </div>
 
@@ -224,7 +216,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
           <input
             type="text"
             required
-            placeholder="e.g. Office Rent, Electricity, Pathao Delivery, Refreshments"
+            placeholder="e.g. Office Rent, Electricity, Delivery, Refreshments"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-xs"
@@ -288,7 +280,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
 
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Payment Method (भुक्तानी माध्यम) *
+              Payment Method *
             </label>
             <select
               value={paymentMethod}

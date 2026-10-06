@@ -142,8 +142,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={productToEdit ? 'Edit Product Item (सामान सम्पादन)' : 'Add New Product (नयाँ सामान थप्नुहोस्)'}
-      subtitle="Track stock, purchase costs, Nepal unit packaging, and profit margins"
+      title={productToEdit ? 'Edit Product Item' : 'Add New Product'}
+      subtitle="Track stock, purchase costs, unit packaging, and profit margins"
       maxWidth="max-w-xl"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -156,7 +156,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="sm:col-span-2">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Product Name (सामानको नाम) *
+              Product Name *
             </label>
             <input
               type="text"
@@ -192,7 +192,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               step="any"
               min="0"
               required
-              placeholder="खरिद मूल्य"
+              placeholder="0.00"
               value={buyingPrice}
               onChange={(e) => setBuyingPrice(e.target.value)}
               className="w-full px-3.5 py-2 text-sm font-semibold bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-xs"
@@ -208,7 +208,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               step="any"
               min="0"
               required
-              placeholder="बिक्री मूल्य"
+              placeholder="0.00"
               value={sellingPrice}
               onChange={(e) => setSellingPrice(e.target.value)}
               className="w-full px-3.5 py-2 text-sm font-semibold bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-xs"
@@ -224,7 +224,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               step="any"
               min="0"
               required
-              placeholder="सङ्ख्या"
+              placeholder="0"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               className="w-full px-3.5 py-2 text-sm font-semibold bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-xs"
@@ -235,7 +235,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Measurement Unit (इकाई)
+              Measurement Unit
             </label>
             <select
               value={unit}
@@ -252,7 +252,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Minimum Stock Alert (न्यूनतम स्टक)
+              Minimum Stock Alert
             </label>
             <input
               type="number"
@@ -308,7 +308,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Supplier (आपूर्तिकर्ता)
+              Supplier / Vendor
             </label>
             <input
               type="text"
@@ -329,7 +329,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 className="w-4 h-4 text-indigo-600 rounded cursor-pointer"
               />
               <label htmlFor="isVatApplicable" className="text-xs font-bold text-slate-700 cursor-pointer">
-                Subject to 13% VAT (भ्याट लाग्ने सामान)
+                Subject to 13% VAT
               </label>
             </div>
           )}

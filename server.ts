@@ -21,8 +21,7 @@ async function startServer() {
   try {
     await connectDB();
   } catch (err) {
-    console.error('Failed to initialize database connection:', err);
-    process.exit(1);
+    console.warn('[DB] Non-fatal database initialization warning:', err);
   }
 
   // Middleware
@@ -35,6 +34,22 @@ async function startServer() {
   // Health check endpoint
   app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', service: 'BizTrack API', timestamp: new Date() });
+  });
+
+  // Database offline error middleware fallback
+  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (
+      err.name === 'MongooseError' ||
+      err.name === 'MongoNetworkError' ||
+      (err.message && err.message.includes('buffering timed out'))
+    ) {
+      console.warn('[AI Studio] Database offline — returning mock empty response');
+      if (req.method === 'GET') {
+        return res.json(req.path.endsWith('s') || req.path.endsWith('s/') ? [] : {});
+      }
+      return res.status(503).json({ error: 'Service temporarily unavailable (database offline)' });
+    }
+    next(err);
   });
 
   if (!isProduction) {

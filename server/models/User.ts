@@ -73,7 +73,7 @@ const UserSchema = new Schema<IUser>(
     },
     businessName: {
       type: String,
-      default: 'मेरो व्यवसाय (Hamro Business)',
+      default: 'My Business Enterprise',
       trim: true,
     },
     ownerName: {

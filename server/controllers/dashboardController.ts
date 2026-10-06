@@ -66,6 +66,7 @@ export async function getDashboardSummary(req: AuthRequest, res: Response): Prom
           vatCollected: { $sum: '$vatAmount' },
           totalUnitsSold: { $sum: '$quantity' },
           totalDiscount: { $sum: '$discount' },
+          cogs: { $sum: { $multiply: ['$quantity', '$buyingPrice'] } },
           count: { $sum: 1 },
           totalReceived: { $sum: '$amountPaid' },
           totalDue: { $sum: '$amountDue' },
@@ -77,6 +78,7 @@ export async function getDashboardSummary(req: AuthRequest, res: Response): Prom
     const vatCollected = salesAgg[0]?.vatCollected || 0;
     const totalUnitsSold = salesAgg[0]?.totalUnitsSold || 0;
     const totalSalesCount = salesAgg[0]?.count || 0;
+    const cogs = salesAgg[0]?.cogs || 0;
 
     // 2. Business Expenses & Personal Expenses
     const expenseMatch: any = { userId };
@@ -160,21 +162,27 @@ export async function getDashboardSummary(req: AuthRequest, res: Response): Prom
       }
     });
 
-    // 6. Net Profit Calculation:
-    // Revenue - Cost of Goods Sold (Purchase Costs) - Business Operating Expenses
-    const totalBusinessCosts = businessExpenses + purchaseCosts;
-    const netProfit = totalSales - totalBusinessCosts;
+    // 6. Professional Accrual Accounting Calculation:
+    // Total Revenue = Completed Sales
+    // COGS = Cost of goods sold (units sold * buying price)
+    // Gross Profit = Total Sales - COGS
+    // Net Profit = Gross Profit - Business Expenses
+    // Personal expenses are isolated and NOT deducted from business profit
+    const grossProfit = totalSales - cogs;
+    const grossMargin = totalSales > 0 ? (grossProfit / totalSales) * 100 : 0;
+    const netProfit = grossProfit - businessExpenses;
     const isProfit = netProfit >= 0;
     const netLoss = isProfit ? 0 : Math.abs(netProfit);
+    const profitMargin = totalSales > 0 ? (netProfit / totalSales) * 100 : 0;
 
-    // Total Expenses (all inclusive for cash tracking)
+    // Total Operating & Stock Costs for reference
+    const totalBusinessCosts = businessExpenses + cogs;
+
+    // Total Cash Expenses (all inclusive for cash tracking)
     const totalExpenses = businessExpenses + personalExpenses + purchaseCosts;
 
-    // Current Cash Balance
+    // Current Cash Balance: Sales income minus actual cash outflows
     const currentBalance = totalSales - totalExpenses;
-
-    // Profit Margin %
-    const profitMargin = totalSales > 0 ? (netProfit / totalSales) * 100 : 0;
 
     // Recent 5 Transactions across all ledgers
     const [recentSales, recentPurchases, recentExpenses] = await Promise.all([
@@ -227,6 +235,9 @@ export async function getDashboardSummary(req: AuthRequest, res: Response): Prom
     res.json({
       summary: {
         totalSales,
+        cogs,
+        grossProfit,
+        grossMargin: Number(grossMargin.toFixed(2)),
         businessExpenses,
         personalExpenses,
         purchaseCosts,
@@ -275,6 +286,7 @@ export async function getMonthlyAnalytics(req: AuthRequest, res: Response): Prom
               month: { $month: '$saleDate' },
             },
             income: { $sum: '$totalAmount' },
+            cogs: { $sum: { $multiply: ['$quantity', '$buyingPrice'] } },
           },
         },
       ]),
@@ -312,6 +324,8 @@ export async function getMonthlyAnalytics(req: AuthRequest, res: Response): Prom
       year: number;
       month: number;
       income: number;
+      cogs: number;
+      grossProfit: number;
       businessExpense: number;
       personalExpense: number;
       purchaseCost: number;
@@ -328,6 +342,8 @@ export async function getMonthlyAnalytics(req: AuthRequest, res: Response): Prom
 
       const s = monthlySales.find((item) => item._id.year === y && item._id.month === m);
       const income = s ? s.income : 0;
+      const mCogs = s ? s.cogs : 0;
+      const grossProfit = income - mCogs;
 
       const p = monthlyPurchases.find((item) => item._id.year === y && item._id.month === m);
       const purchaseCost = p ? p.purchaseCost : 0;
@@ -343,7 +359,7 @@ export async function getMonthlyAnalytics(req: AuthRequest, res: Response): Prom
       const personalExpense = pExp ? pExp.total : 0;
 
       const totalExpense = businessExpense + personalExpense + purchaseCost;
-      const netProfit = income - businessExpense - purchaseCost;
+      const netProfit = grossProfit - businessExpense;
 
       timeline.push({
         monthKey: key,
@@ -351,6 +367,8 @@ export async function getMonthlyAnalytics(req: AuthRequest, res: Response): Prom
         year: y,
         month: m,
         income,
+        cogs: mCogs,
+        grossProfit,
         businessExpense,
         personalExpense,
         purchaseCost,

@@ -155,7 +155,7 @@ export const Auth: React.FC = () => {
           Business Expense & Management
         </p>
         <span className="inline-block mt-2 px-3 py-1 rounded-full text-[11px] font-bold text-indigo-300 bg-indigo-950/70 border border-indigo-700/50">
-          🇳🇵 नेपाल व्यवसाय आय-व्यय तथा नाफा व्यवस्थापन
+          Commercial Financial, Inventory & Profit Management • Nepal
         </span>
       </div>
 
