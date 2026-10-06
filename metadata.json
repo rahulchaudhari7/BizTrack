@@ -1,0 +1,6 @@
+{
+  "name": "BizTrack – Business Expense & Profit Manager",
+  "description": "Full-stack business finance, inventory, expenses, purchases, sales, and profit tracking dashboard for small business owners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
